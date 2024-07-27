@@ -2,40 +2,222 @@
 
 ### Table of Contents
 - [Project Setup](#project-setup)
+  - [Download Unity Hub](#download-unity-hub)
+  - [Install Latest Unity LTS Version](#install-latest-unity-lts-version)
+  - [Configure with GitHub](#configure-with-github)
+- [Folder Structure](#folder-structure)
 - [Coding Standards](#coding-standards)
-- [Asset Management](#asset-management)
-- [Scene Organization](#scene-organization)
-- [Performance Optimization](#performance-optimization)
-- [Testing and Debugging](#testing-and-debugging)
-- [Version Control](#version-control)
-- [General Tips](#general-tips)
+  - [Pascal Case](#pascal-case)
+  - [Variable Naming](#variable-naming)
+  - [Function Order](#function-order)
+  - [Comments](#comments)
 
 ## Project Setup
-- **Folder Structure**: Organize your project folders logically (e.g., `Assets/Scripts`, `Assets/Prefabs`, `Assets/Textures`, etc.).
-- **Naming Conventions**: Use consistent naming conventions for all files and assets (e.g., `PascalCase` for scripts, `snake_case` for textures).
-- **Project Settings**: Configure your project settings early (e.g., set up the default layers, tags, physics settings, and quality settings).
+
+### Download Unity Hub
+**What is Unity Hub?**
+
+Unity Hub is a standalone management tool that allows you to manage multiple Unity projects and installations of the Unity Editor.
+
+**Why use Unity Hub?**
+
+Using Unity Hub makes it easy to manage different versions of Unity, switch between projects, and organize your development environment efficiently.
+
+**Steps to Download Unity Hub:**
+1. Go to the [Unity Hub download page](https://unity3d.com/get-unity/download).
+2. Click on the “Download Unity Hub” button.
+3. Install the downloaded Unity Hub installer on your computer.
+
+### Install Latest Unity LTS Version
+
+**What is LTS?**
+
+LTS stands for Long Term Support. Unity LTS versions provide a stable foundation for projects, with bug fixes and improvements without introducing new features that might disrupt development.
+
+**Why use LTS?**
+
+Using the latest Unity LTS version ensures that your project benefits from the latest stability and security updates without the risk of new, potentially unstable features.
+
+**Steps to Install Unity LTS Version:**
+1. Open Unity Hub.
+2. Go to the “Installs” tab.
+3. Click on “Add” and select the latest LTS version.
+4. Follow the prompts to install the selected Unity version.
+5. Install any required modules (WebGL, iOS, Android, etc)
+
+### Configure with GitHub
+
+**Why use GitHub?**
+
+GitHub provides version control for your project, allowing you to track changes, collaborate with team members, and revert to previous states if necessary.
+
+**Steps to Configure Unity Project with GitHub Desktop:**
+
+1. Clone a Repository
+    - Open GitHub Desktop.
+    - Click on "File" > "Clone Repository..."
+    - In the "URL" tab, enter the URL of the repository you want to clone.
+    - Choose the local path where you want to clone the repository.
+    - Click "Clone".
+
+2. Commit Your Changes
+    - Make changes to your Unity project.
+    - Open GitHub Desktop, and you should see your project files listed in the "Changes" tab.
+    - Write a commit message describing the changes.
+    - Click the "Commit to main" button.
+
+3. Push Your Changes
+    - After committing your changes, click the "Push origin" button at the top of GitHub Desktop to sync your changes with the GitHub repository.
+
+4. Sync Changes
+    - If there are changes in the remote repository that you don't have locally, click the "Fetch origin" button in GitHub Desktop.
+    - Review the changes and, if everything looks good, click the "Pull origin" button to sync the changes to your local repository.
+
+
+## Folder Structure
+
+### Why is Folder Structure Important?
+A well-organised folder structure helps keep your project manageable and makes it easier to locate and manage assets and scripts.
+
+### Recommended Folder Structure:
+- **Assets/**: Main folder for all your assets.
+- **Scripts/**: All C# scripts.
+- **Prefabs/**: Prefabricated objects.
+- **Scenes/**: All scene files.
+- **Materials/**: Material files.
+- **Textures/**: Texture files.
+- **Audio/**: Audio files.
+- **Animations/**: Animation files and controllers.
+- **UI/**: User Interface elements and related scripts.
+
+### Example:
+```plaintext
+Assets/
+  Scripts/
+    Player/
+    Enemies/
+  Prefabs/
+    Characters/
+    Environment/
+  Scenes/
+    MainMenu.unity
+    Level1.unity
+  Materials/
+    PlayerMaterials/
+    EnemyMaterials/
+  Textures/
+    UI/
+    Environment/
+  Audio/
+    Music/
+    SFX/
+  Animations/
+    Player/
+    Enemies/
+  UI/
+    MainMenu/
+    InGameUI/
+```
 
 ## Coding Standards
-- **Code Style**: Follow a consistent coding style. Use descriptive variable and method names.
-- **Component-Based Design**: Use Unity's component system effectively. Break down functionality into reusable components.
-- **Script Organization**: Keep scripts short and focused on a single responsibility. Organize scripts into folders based on their purpose.
-- **Comments and Documentation**: Comment your code where necessary and maintain good documentation.
+### Pascal Case
+**What is Pascal Case?**
 
-## Asset Management
-- **Asset Naming**: Use a clear naming convention for assets (e.g., `Enemy_Orc`, `Player_Character`, `UI_MainMenu`).
-- **Asset Import Settings**: Optimize import settings for different asset types (e.g., textures, models, audio).
-- **Prefab Usage**: Use prefabs for reusable objects and maintain a clean prefab hierarchy.
+Pascal Case is a naming convention where the first letter of each word is capitalized without any spaces or underscores.
 
-## Scene Organization
-- **Scene Hierarchy**: Organize your scene hierarchy logically (e.g., group related objects together).
-- **Empty GameObjects**: Use empty GameObjects as parent objects to group related objects and improve hierarchy readability.
-- **Lighting and Post-Processing**: Set up lighting and post-processing effects early and adjust as needed.
+**Where to use Pascal Case?**
 
-## Performance Optimization
-- **Batching**: Use static and dynamic batching to reduce draw calls.
-- **LOD (Level of Detail)**: Implement LOD for complex models to improve performance.
-- **Memory Management**: Monitor and manage memory usage. Use object pooling for frequently instantiated objects.
-- **Physics Optimization**: Optimize physics calculations by adjusting collision detection modes and using simplified colliders.
+Use Pascal Case for naming classes, methods, and properties. E.g.
+- Class: `PlayerController`
+- Method: `GetPlayerHealth`
+- Property: `IsAlive`
 
-## Testing and Debugging
-- **Debugging Tools**: Use Unity
+### Variable Naming
+**Descriptive Names**
+
+Use clear, descriptive names for variables that convey their purpose
+- Bad: `int hp;`
+- Good: `int healthPoints`
+
+**Camel Case**
+
+Use camel case for variable names, where the first letter is lowercase, and the first letter of each subsequent word is capitalised. E.g.
+- `playerHealth`
+- `enemySpeed`
+- `isGameOver`
+
+**Boolean Variables**
+
+Start boolean variable namse with "is" or "has" to indicate a true/false value. E.g,
+- `isJumping`
+- `hasPowerUp`
+
+### Function Order
+**Organise Methods Logically**
+Arrange methods in a logical order, typically grouping related functions together
+- **Initialization Methods**: Constructor, `Awake()`, `Start()`
+- **Update Methods**: `Update()`, `FixedUpdate()`, `LateUpdate()`
+- **Event Handlers**: Input handlers, collision handlers
+- **Utility Methods**: Helper functions, private methods
+
+**Example**
+
+```c#
+public class PlayerController : MonoBehaviour
+{
+    // Initialization methods
+    void Awake() { }
+    void Start() { }
+
+    // Update methods
+    void Update() { }
+    void FixedUpdate() { }
+
+    // Event handlers
+    void OnCollisionEnter(Collision collision) { }
+
+    // Utility methods
+    private void MovePlayer() { }
+}
+```
+
+### Comments
+**Why Comment?**
+
+Comments make your code easier to understand for yourself and others, explaining the purpose of complex code sections.
+
+
+**Types of Comments**
+
+- **Single-Line Comments**: Use // for short explanations or notes.
+- **Multi-Line Comments**: Use /* */ for longer explanations or block comments.
+- **XML Documentation Comments**: Use /// for method or class documentation, which can be used by IDEs to provide additional information.
+
+**Example**
+
+This example is a bit overkill. You don't have to comment everything, but this is an example of how to use every different type of comment in one method.
+```c#
+/// <summary>
+/// Calculates the player's score.
+/// </summary>
+/// <param name="points">The points to add to the score.</param>
+void CalculateScore(int points)
+{
+    // Initial score value, starting at zero.
+    int score = 0;
+
+    /*
+     * Check if the points parameter is valid.
+     * If points is less than zero, log a warning and return without changing the score.
+     * This prevents the score from being inadvertently decreased.
+     */
+    if (points < 0)
+    {
+        Console.WriteLine("Warning: Points cannot be negative.");
+        return;
+    }
+
+    // Add the points to the score.
+    score += points;
+}
+```
