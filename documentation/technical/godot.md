@@ -104,7 +104,7 @@ Use clear, descriptive names for classes.
 
 Pascal Case is a naming convention where the first letter of each word is capitalized without any spaces or underscores.
 Use Pascal Case for naming clases E.g.
-- `class_name Player`
+- `class_name PlayerController`
 - `class_name Item`
 
 ### Variable Naming
